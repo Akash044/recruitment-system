@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import SingleJob from './SingleJob';
-import { useHistory, useLocation } from "react-router-dom";
 import { userContext } from '../../App';
+import SingleAvaiJob from './SingleAvaiJob';
 
-
-const View_jobs = () => {
-    const history = useHistory();
+const Available_jobs = () => {
     const [user, setUser] = useContext(userContext);
     const [allJobs, setAllJobs] = useState([]);
     
     useEffect(() =>{
-        fetch(`http://localhost:8080/allPost?email=${user}`)
+        fetch(`http://localhost:8080/allPost`)
         .then(res => res.json())
         .then(data =>{
             setAllJobs(data);
@@ -21,10 +18,11 @@ const View_jobs = () => {
     return (
         <div>
             {
-                allJobs?.map(job => <SingleJob jobInfo={job} />)
+                allJobs.map(job => <SingleAvaiJob jobInfo={job} /> )
             }
+            
         </div>
     );
 };
 
-export default View_jobs;
+export default Available_jobs;
