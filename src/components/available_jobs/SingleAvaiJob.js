@@ -11,64 +11,52 @@ import {
 
 const SingleAvaiJob = (props) => {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
     const {title,type,city,openings,ctc,requiredSkills,description,id} = props.jobInfo;
-  
-    const handleApplyBtn = () => {
-        console.log('clicked')
-    }
   
     return (
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-            {title}
+           <i>Job Title:</i> {title}
           </Typography>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-           {type}
+          <i>Type:</i> {type}
           </Typography>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-            {city}
+           <i>City:</i> {city}
           </Typography>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-            {openings}
+           <i>No. of Openings:</i> {openings}
           </Typography>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-            {ctc}
+           <i>CTC:</i> {ctc}
           </Typography>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-            {description}
+           <i>Description:</i> {description}
           </Typography>
           <Typography
             className={classes.title}
-            color="textSecondary"
             gutterBottom
           >
-            {requiredSkills}
+           <i>Skills Required:</i> {requiredSkills}
           </Typography>
       
         </CardContent>
@@ -81,17 +69,10 @@ const SingleAvaiJob = (props) => {
   const useStyles = makeStyles({
     root: {
       minWidth: 275,
-    },
-    bullet: {
-      display: "inline-block",
-      margin: "0 2px",
-      transform: "scale(0.8)",
+      marginBottom: "5px"
     },
     title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
+      fontSize: 18,
     },
   });
 export default SingleAvaiJob;

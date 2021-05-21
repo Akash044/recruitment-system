@@ -3,10 +3,8 @@ import {
   makeStyles,
   Button,
   TextField,
-  Switch,
-  FormControlLabel,
 } from "@material-ui/core";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { userContext } from "../../App";
 
 const Post_a_job = () => {
@@ -33,6 +31,7 @@ const Post_a_job = () => {
 
   return (
     <div className={classes.formDiv}>
+      <Button variant="contained" color="primary" onClick={() =>history.replace("/view_jobs")}> View posted jobs</Button>
       <form
         className={classes.root}
         autoComplete="off"
@@ -117,6 +116,7 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: "100px",
   },
 }));
 

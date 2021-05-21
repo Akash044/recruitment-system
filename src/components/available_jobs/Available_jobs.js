@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { userContext } from '../../App';
+import React, { useEffect, useState } from 'react';
+
 import SingleAvaiJob from './SingleAvaiJob';
+import { makeStyles } from "@material-ui/core";
 
 const Available_jobs = () => {
-    const [user, setUser] = useContext(userContext);
+    const classes = useStyles();
     const [allJobs, setAllJobs] = useState([]);
     
     useEffect(() =>{
@@ -16,13 +17,19 @@ const Available_jobs = () => {
     },[])
 
     return (
-        <div>
+        <div className ={classes.root}>
             {
-                allJobs.map(job => <SingleAvaiJob jobInfo={job} /> )
+                allJobs.map(job => <SingleAvaiJob job={job.id} jobInfo={job} /> )
             }
             
         </div>
     );
 };
-
+const useStyles = makeStyles({
+    root: {
+      display: "grid",
+      justifyContent: "center",
+      marginTop: "100px",
+    },
+  });
 export default Available_jobs;

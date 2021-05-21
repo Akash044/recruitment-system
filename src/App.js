@@ -13,6 +13,8 @@ import View_jobs from './components/View_jobs/View_jobs';
 import { createContext, useState } from 'react';
 import Available_jobs from './components/available_jobs/Available_jobs';
 import ApplyPage from './components/ApplyPage/ApplyPage';
+import Applicants from './components/Applicants/Applicants';
+import My_applied_projects from './components/My_applied_projects/My_applied_projects';
 
 export const userContext = createContext({});
 
@@ -45,6 +47,12 @@ function App() {
           </Route>
           <Route path="/apply/:id">
             <ApplyPage />
+          </Route>
+          <Route path="/applicants/:id">
+            <Applicants />
+          </Route>
+          <Route path="/appliedPost/:email">
+            <My_applied_projects />
           </Route>
 
         </Switch>

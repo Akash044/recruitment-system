@@ -7,72 +7,61 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 const SingleJob = (props) => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-  const {title,type,city,openings,ctc,requiredSkills,description} = props.jobInfo;
-
-  const handleApplicantBtn = () => {
-      console.log('clicked')
-  }
+  const {title,type,city,openings,ctc,requiredSkills,description, id} = props.jobInfo;
 
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {title}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-         {type}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {city}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {openings}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {ctc}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {description}
-        </Typography>
-        <Typography
-          className={classes.title}
-          color="textSecondary"
-          gutterBottom
-        >
-          {requiredSkills}
-        </Typography>
-    
-      </CardContent>
-      <CardActions>
-        <Button variant="contained" color="primary" onClick={handleApplicantBtn}>Applicants</Button>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+           <i>Job Title:</i> {title}
+          </Typography>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+          <i>Type:</i> {type}
+          </Typography>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+           <i>City:</i> {city}
+          </Typography>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+           <i>No. of Openings:</i> {openings}
+          </Typography>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+           <i>CTC:</i> {ctc}
+          </Typography>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+           <i>Description:</i> {description}
+          </Typography>
+          <Typography
+            className={classes.title}
+            gutterBottom
+          >
+           <i>Skills Required:</i> {requiredSkills}
+          </Typography>
+      
+        </CardContent>
+      <CardActions> <Link to = {`/applicants/${id}`}>
+        <Button variant="contained" color="primary">See Applicants</Button></Link>
       </CardActions>
     </Card>
   );
@@ -81,16 +70,8 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
   title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
+    fontSize: 18,
   },
 });
 

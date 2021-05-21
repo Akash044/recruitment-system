@@ -6,11 +6,12 @@ import {
   Switch,
   FormControlLabel,
 } from "@material-ui/core";
-import { useHistory, useLocation } from "react-router-dom";
-import firebase from "firebase/app";
-import "firebase/auth";
+import { useHistory } from "react-router-dom";
+
 import firebaseConfig from "../../firebase.config";
 import { userContext } from "../../App";
+import firebase from "firebase/app";
+import "firebase/auth";
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -49,7 +50,6 @@ const Login_Register = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           alert("employer added successfully");
         });
     }
@@ -62,7 +62,6 @@ const Login_Register = () => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
         setUser(user.email);
         const message = "successfully signed in";
         setMessage(message);
@@ -70,16 +69,12 @@ const Login_Register = () => {
         fetch(`http://localhost:8080/isEmployer?email=${user.email}`)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             if(data){
               history.replace('/make_job_post');
             }else{
               history.replace('/available_jobs')
             }
-          });
-
-        
-        
+          });         
       })
       .catch((error) => {
         setMessage(error.message);
@@ -100,7 +95,6 @@ const Login_Register = () => {
             id="outlined-required"
             label="Email"
             type="email"
-            // defaultValue="Hello World"
             variant="outlined"
             onBlur={(e) => setEmail(e.target.value)}
           />
@@ -124,7 +118,7 @@ const Login_Register = () => {
                   name="isEmp"
                 />
               }
-              label="Employer?"
+              label="Are you an employer?"
             />
           )}
         </div>
@@ -132,13 +126,14 @@ const Login_Register = () => {
           {isUser ? "Login" : "Register"}
         </Button>
         <p>
-          {isUser ? "New user?" : "Already have an account?"}
-          <Button onClick={() => setIsUser(!isUser)}>
+          {isUser ? "Are you new user?" : "Already have an account?"}
+          <Button onClick={() => setIsUser(!isUser)} color="primary">
             {isUser ? "Register" : "Login"}
           </Button>
         </p>
+        <h5>{message}</h5>
       </form>
-      <h5>{message}</h5>
+      
     </div>
   );
 };
@@ -155,6 +150,7 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: "100px"
   },
 }));
 export default Login_Register;
