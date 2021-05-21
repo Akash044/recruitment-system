@@ -18,7 +18,7 @@ const Applicants = () => {
   const [url, setUrl] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8080/allApplicants?jobId=${id}`)
+    fetch(`https://tranquil-cove-03485.herokuapp.com/allApplicants?jobId=${id}`)
       .then((res) => res.json())
       .then((data) => {
         setApplicants(data);

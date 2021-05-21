@@ -16,7 +16,7 @@ const ApplyPage = () => {
   const [applicantFile, setApplicantFile] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/allPost")
+    fetch("https://tranquil-cove-03485.herokuapp.com/allPost")
       .then((res) => res.json())
       .then((data) => {
         const matched = data.filter((dt) => dt.id === id);
@@ -39,7 +39,7 @@ const ApplyPage = () => {
       history.replace(`/appliedPost/${applicantInfo.email}`);
     });
 
-    fetch("http://localhost:8080/addApplicant", {
+    fetch("https://tranquil-cove-03485.herokuapp.com/addApplicant", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...applicantInfo, id: id }),

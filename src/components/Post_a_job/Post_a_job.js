@@ -16,7 +16,7 @@ const Post_a_job = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(jobInfo);
-    fetch("http://localhost:8080/addPost", {
+    fetch("https://tranquil-cove-03485.herokuapp.com/addPost", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({...jobInfo, email : user,}),

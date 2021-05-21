@@ -43,7 +43,7 @@ const Login_Register = () => {
 
     console.log("hi", email, " ", password, " ", isEmployer);
     if (isEmployer) {
-      fetch("http://localhost:8080/addEmployer", {
+      fetch("https://tranquil-cove-03485.herokuapp.com/addEmployer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ employerEmail: email }),
@@ -66,7 +66,7 @@ const Login_Register = () => {
         const message = "successfully signed in";
         setMessage(message);
 
-        fetch(`http://localhost:8080/isEmployer?email=${user.email}`)
+        fetch(`https://tranquil-cove-03485.herokuapp.com/isEmployer?email=${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             if(data){
